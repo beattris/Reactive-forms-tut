@@ -1,3 +1,11 @@
 .container {
   margin-top: 30px;
 }
+
+input.ng-invalid.ng-touched{
+  border: 2px solid rgb(183, 13, 13);
+}
+
+input.ng-valid{
+  border: 2px solid green;
+}
