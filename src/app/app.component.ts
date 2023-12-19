@@ -24,10 +24,26 @@ export class AppComponent implements OnInit {
       gender: new FormControl('female'),
       hobbies: new FormArray([]),
     });
+    // this.signupForm.valueChanges.subscribe(value => console.log(value));
+    this.signupForm.statusChanges.subscribe(status => console.log(status));
+    this.signupForm.setValue({
+      'userData': {
+        'username': 'Tris',
+        'email': 'tris@tris.com'
+      },
+      'gender': 'female',
+      'hobbies': []
+    });
+    this.signupForm.patchValue({
+      'userData': {
+        'username': 'Beattie',
+      },
+    })
   }
 
   onSubmit() {
     console.log(this.signupForm);
+    this.signupForm.reset();
   }
 
   getControls() {
@@ -44,7 +60,7 @@ export class AppComponent implements OnInit {
   forbiddenNames(control: FormControl): { [s: string]: boolean } {
     if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
       return { nameIsForbidden: true };
-    }
+    } 
     return null;
   } 
   
